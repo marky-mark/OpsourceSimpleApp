@@ -1,0 +1,106 @@
+---------------------------------------------------------------------------
+Liquibase
+---------------------------------------------------------------------------
+used liquibase to setup the database schema. You can get hibernate to setup the schema
+automatically but this is a really bad idea. Liquibase has been put into its own module
+This is so you may create a jar containing just the schema and execute the jar against
+a desired database. I left some notes in the liquibase pom
+
+---------------------------------------------------------------------------
+Database setup:
+---------------------------------------------------------------------------
+
+Execute the following commands to setup your database
+unix-shell>mysql -uroot
+
+CREATE USER 'dimensiondata'@'localhost' IDENTIFIED BY 'd1m3nS10n5000';
+GRANT ALL PRIVILEGES ON * . * TO 'dimensiondata'@'localhost';
+EXIT;
+
+unix-shell>mysql -u dimensiondata -pd1m3nS10n5000
+
+CREATE DATABASE servers DEFAULT CHARACTER SET utf8;
+EXIT;
+
+---------------------------------------------------------------------------
+Building Tool - Maven
+---------------------------------------------------------------------------
+
+Used maven instead of ant as i am familiar with it but also just makes it easier for building
+and reporting. From the base project folder OpensourceSimpleApp
+
+unix-shell> mvn clean package
+unix-shell> cd liquibase
+unix-shell> mvn liquibase:update
+
+---------------------------------------------------------------------------
+Application Execution
+---------------------------------------------------------------------------
+
+Run the Mainapp.java. I wanted to keep with the current specs of reading in
+and printing to system. Nothing that fancy here but i did refactor the
+original code to keep single responsibility per class e.g. ConsoleInteractor specifies
+how to interact to the user. The ApplicationInteractor decides what to interact to the user
+with.
+
+---------------------------------------------------------------------------
+Loading Data
+---------------------------------------------------------------------------
+
+Used Jaxb to Unmarshall from a string to a list of servers.
+I adjusted the server.xml to allow for a list, but the format is more or less
+the same.
+
+On startup, the dataLoader class reads in data and submits to hibernate service
+to persist to database. The persistence of the list is atomic, This can be bad in that
+all will fail if 1 fails. Typically this can happen if a server id already exists i.e.
+the second time you run the application.
+
+use the switch "--no-load-data" to not load data in on startup.
+
+---------------------------------------------------------------------------
+Database Integration Test
+---------------------------------------------------------------------------
+
+Decided to use hibernate to connect to the database. There are integration tests that
+use H2 the in memory database.
+
+---------------------------------------------------------------------------
+Future work?
+---------------------------------------------------------------------------
+
+- The loading of data does not scale. It is single threaded in the application and
+blocks the user interface from running. I would execute this as a separate thread
+if the list of servers are big.
+
+- Depending on the size of the file (or many files) i would have some job to execute
+1 or more threads (splitting work by number of files or splitting the files). I
+deemed this out of scope as was not in the acceptance criteria.
+
+- Could possibly make this into a spring web application, again out of scope.
+
+- Could have used the spring application context, but for the size of the application
+i decided for the main application to construct the classes and pass them into the
+classes needed.
+
+- BDD cucumber acceptance tests. This could be executed as part of the build.
+Fire up the application and execute the tests against the application.
+
+- Source control. Usually i would put this onto github (https://github.com/marky-mark)
+Im not sure which source control you use, Barry suggested dropbox anyway.
+
+---------------------------------------------------------------------------
+environment
+---------------------------------------------------------------------------
+Mac OS X 10.9.4
+mysql 5.6.21
+intellij 14
+java 6
+maven 3.0.5
+
+
+
+
+
+
+
