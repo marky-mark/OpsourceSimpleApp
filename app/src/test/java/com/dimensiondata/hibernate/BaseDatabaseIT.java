@@ -1,5 +1,6 @@
 package com.dimensiondata.hibernate;
 
+import com.dimensiondata.hibernate.server.HibernateServerServiceIT;
 import liquibase.Liquibase;
 import liquibase.database.Database;
 import liquibase.database.DatabaseFactory;

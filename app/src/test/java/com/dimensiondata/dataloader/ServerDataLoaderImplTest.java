@@ -1,9 +1,9 @@
 package com.dimensiondata.dataloader;
 
+import com.dimensiondata.hibernate.server.ServerService;
 import com.dimensiondata.jaxb.model.Server;
 import com.dimensiondata.jaxb.model.Servers;
 import com.dimensiondata.jaxb.unmarshaller.UnMarshaller;
-import com.dimensiondata.hibernate.ServerService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -47,9 +47,9 @@ public class ServerDataLoaderImplTest {
 
         ArgumentCaptor listArgumentCaptor = ArgumentCaptor.forClass(List.class);
         verify(mockedDatabaseServerService)
-                .create((List<com.dimensiondata.hibernate.entity.Server>) listArgumentCaptor.capture());
-        List<com.dimensiondata.hibernate.entity.Server> persistedData
-                = (List<com.dimensiondata.hibernate.entity.Server>) listArgumentCaptor.getValue();
+                .create((List<com.dimensiondata.hibernate.server.entity.Server>) listArgumentCaptor.capture());
+        List<com.dimensiondata.hibernate.server.entity.Server> persistedData
+                = (List<com.dimensiondata.hibernate.server.entity.Server>) listArgumentCaptor.getValue();
 
         assertThat(persistedData.size(), is(2));
         assertThat(persistedData.get(0).getId(), is("foo"));

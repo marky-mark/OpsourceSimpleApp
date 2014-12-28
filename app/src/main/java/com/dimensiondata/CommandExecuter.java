@@ -1,8 +1,8 @@
 package com.dimensiondata;
 
-import com.dimensiondata.hibernate.HibernateServerServiceException;
-import com.dimensiondata.hibernate.ServerService;
-import com.dimensiondata.hibernate.entity.Server;
+import com.dimensiondata.hibernate.HibernateServiceException;
+import com.dimensiondata.hibernate.server.ServerService;
+import com.dimensiondata.hibernate.server.entity.Server;
 
 public class CommandExecuter {
 
@@ -50,7 +50,7 @@ public class CommandExecuter {
 
         try {
             serverService.update(new Server(idToEdit, nameToEdit));
-        } catch (HibernateServerServiceException e) {
+        } catch (HibernateServiceException e) {
             interactor.showError(e);
         }
     }
@@ -60,7 +60,7 @@ public class CommandExecuter {
 
         try {
             serverService.delete(idToDelete);
-        } catch (HibernateServerServiceException e) {
+        } catch (HibernateServiceException e) {
             interactor.showError(e);
         }
     }
@@ -71,7 +71,7 @@ public class CommandExecuter {
 
         try {
             serverService.create(new Server(idToCreate, nameToCreate));
-        } catch (HibernateServerServiceException e) {
+        } catch (HibernateServiceException e) {
             interactor.showError(e);
         }
     }

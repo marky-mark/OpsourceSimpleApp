@@ -19,7 +19,7 @@
         <property name="connection.pool_size">1</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping class="com.dimensiondata.hibernate.entity.Server"/>
+        <mapping class="com.dimensiondata.hibernate.server.entity.Server"/>
 
     </session-factory>
 </hibernate-configuration>

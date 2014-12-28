@@ -5,9 +5,9 @@ import com.dimensiondata.console.SystemConsoleInteractor;
 import com.dimensiondata.dataloader.DataLoaderException;
 import com.dimensiondata.dataloader.ServerDataLoader;
 import com.dimensiondata.dataloader.ServerDataLoaderImpl;
-import com.dimensiondata.hibernate.HibernateServerService;
+import com.dimensiondata.hibernate.server.HibernateServerService;
 import com.dimensiondata.hibernate.HibernateUtil;
-import com.dimensiondata.hibernate.ServerService;
+import com.dimensiondata.hibernate.server.ServerService;
 
 import java.io.IOException;
 

@@ -1,6 +1,6 @@
-package com.dimensiondata.hibernate;
+package com.dimensiondata.hibernate.server;
 
-import com.dimensiondata.hibernate.entity.Server;
+import com.dimensiondata.hibernate.server.entity.Server;
 
 import java.util.List;
 

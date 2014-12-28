@@ -1,4 +1,4 @@
-package com.dimensiondata.hibernate.entity;
+package com.dimensiondata.hibernate.server.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

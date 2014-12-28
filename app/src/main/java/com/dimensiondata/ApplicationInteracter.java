@@ -1,7 +1,7 @@
 package com.dimensiondata;
 
 
-import com.dimensiondata.hibernate.entity.Server;
+import com.dimensiondata.hibernate.server.entity.Server;
 import com.dimensiondata.console.ConsoleInteractor;
 
 import java.util.List;

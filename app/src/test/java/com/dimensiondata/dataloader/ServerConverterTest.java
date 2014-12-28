@@ -15,7 +15,7 @@ public class ServerConverterTest {
 
     @Test
     public void shouldReturnEmptyListIfNull() throws Exception {
-        List<com.dimensiondata.hibernate.entity.Server> serverList = ServerConverter.convert(null);
+        List<com.dimensiondata.hibernate.server.entity.Server> serverList = ServerConverter.convert(null);
         assertTrue(serverList.isEmpty());
     }
 
@@ -26,7 +26,7 @@ public class ServerConverterTest {
         serversToConvert.add(new Server("fooz", "barz"));
         Servers servers = new Servers(serversToConvert);
 
-        List<com.dimensiondata.hibernate.entity.Server> serverList = ServerConverter.convert(servers);
+        List<com.dimensiondata.hibernate.server.entity.Server> serverList = ServerConverter.convert(servers);
 
         assertThat(serverList.size(), is(2));
         assertThat(serverList.get(0).getId(), is("foo"));
@@ -37,7 +37,7 @@ public class ServerConverterTest {
 
     @Test
     public void shouldConvertEmptyList() throws Exception {
-        List<com.dimensiondata.hibernate.entity.Server> serverList = ServerConverter.convert(new Servers());
+        List<com.dimensiondata.hibernate.server.entity.Server> serverList = ServerConverter.convert(new Servers());
         assertTrue(serverList.isEmpty());
     }
 }

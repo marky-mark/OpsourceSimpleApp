@@ -1,10 +1,10 @@
 package com.dimensiondata.dataloader;
 
-import com.dimensiondata.hibernate.HibernateServerServiceException;
+import com.dimensiondata.hibernate.HibernateServiceException;
+import com.dimensiondata.hibernate.server.ServerService;
 import com.dimensiondata.jaxb.model.Servers;
 import com.dimensiondata.jaxb.unmarshaller.JaxUnmarshaller;
 import com.dimensiondata.jaxb.unmarshaller.UnMarshaller;
-import com.dimensiondata.hibernate.ServerService;
 
 import java.io.InputStream;
 
@@ -34,7 +34,7 @@ public class ServerDataLoaderImpl implements ServerDataLoader {
 
         try {
             serverService.create(ServerConverter.convert(serverList));
-        } catch (HibernateServerServiceException e) {
+        } catch (HibernateServiceException e) {
             throw new DataLoaderException(e);
         }
     }

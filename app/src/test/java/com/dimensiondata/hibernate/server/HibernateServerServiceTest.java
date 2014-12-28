@@ -1,6 +1,6 @@
-package com.dimensiondata.hibernate;
+package com.dimensiondata.hibernate.server;
 
-import com.dimensiondata.hibernate.entity.Server;
+import com.dimensiondata.hibernate.server.entity.Server;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;

@@ -1,6 +1,9 @@
-package com.dimensiondata.hibernate;
+package com.dimensiondata.hibernate.server;
 
-import com.dimensiondata.hibernate.entity.Server;
+import com.dimensiondata.hibernate.BaseDatabaseIT;
+import com.dimensiondata.hibernate.HibernateServiceException;
+import com.dimensiondata.hibernate.HibernateUtil;
+import com.dimensiondata.hibernate.server.entity.Server;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.junit.After;
@@ -39,7 +42,7 @@ public class HibernateServerServiceIT extends BaseDatabaseIT {
         assertThat(server, is(serverInDb));
     }
 
-    @Test(expected = HibernateServerServiceException.class)
+    @Test(expected = HibernateServiceException.class)
     public void shouldThrowExceptionWhenDuplicateEntry() throws Exception {
         Server server = new Server("123", "test");
         hibernateServerService.create(server);

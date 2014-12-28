@@ -1,8 +1,8 @@
 package com.dimensiondata.dataloader;
 
 
+import com.dimensiondata.hibernate.server.entity.Server;
 import com.dimensiondata.jaxb.model.Servers;
-import com.dimensiondata.hibernate.entity.Server;
 
 import java.util.ArrayList;
 import java.util.List;
